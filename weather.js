@@ -11,7 +11,6 @@ $(document).ready(function myFunction() {
         var $ctemp = ($ftemp - 32) * (5/9);
         $('.temp-data').html(+$ctemp.toFixed(2)); //the + sign here drops an unnecessary zero
       }
-      
     } else {
       //console.log("The farenheit button was clicked.");
       if (selectedTempUnit = "celsius") {
