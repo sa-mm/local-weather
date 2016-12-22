@@ -1,0 +1,1 @@
+Local weather app. Gives the current weather. Gets the location using the browsers geolocation api.
