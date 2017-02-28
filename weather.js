@@ -4,15 +4,13 @@ $(document).ready(function myFunction() {
   var selectedTempUnit = "farenheit";
   $("#temp-buttons :input").change(function() {
     if ($(this).is('#celsius') == true) {
-      //console.log("Celsius button was clicked");
       if (selectedTempUnit == "farenheit") {
         selectedTempUnit = "celsius";
         var $ftemp = $('.temp-data').html();
         var $ctemp = ($ftemp - 32) * (5/9);
-        $('.temp-data').html(+$ctemp.toFixed(2)); //the + sign here drops an unnecessary zero
+        $('.temp-data').html(+$ctemp.toFixed(2));
       }
     } else {
-      //console.log("The farenheit button was clicked.");
       if (selectedTempUnit = "celsius") {
         selectedTempUnit = "farenheit";
         var $ctemp = $('.temp-data').html();
@@ -26,7 +24,6 @@ $(document).ready(function myFunction() {
     navigator.geolocation.getCurrentPosition(function(position) {
       myLat = position.coords.latitude;
       myLon = position.coords.longitude;
-      // var api = "https://api.darksky.net/forecast/";
       var api = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?";
       if (selectedTempUnit == "farenheit") {
         var units = "&units=imperial";
@@ -35,10 +32,7 @@ $(document).ready(function myFunction() {
       }
       var apiKey = "bd7d12743df2238bcd53393c028d3396";
       var url = api + 'lat=' + myLat + '&lon=' + myLon + units +  '&APPID=' + apiKey;
-      // var url = api + apiKey + "/" + myLat + "," + myLon; //dark sky
-      //console.log(url);
       $.getJSON(url,function(json){
-        // console.log(json);
         $(".temp-data").html(json.main.temp);
         var weatherDescription = json.weather[0].description;
         var weatherImgURL = 'https://openweathermap.org/img/w/' + json.weather[0].icon + '.png';
